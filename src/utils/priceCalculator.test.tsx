@@ -7,15 +7,14 @@ import { calculateGST, calculateTotalPrice } from './priceCalculator'
 describe('Price Calculator', () => {
 	let mockOrder = mockOrderCopy();
 
-	// add chesesebuger x1 ($15), softdrink small x2 ($4 each)
 	let cheesbgr = mockOrder[0];
 	let chickenbgr = mockOrder[1];
 	let softdrinksml = mockOrder[2];
 	let softdrinklrg = mockOrder[3];
-	cheesbgr.qty = 1;
-	chickenbgr.qty = 2;
-	softdrinksml.qty = 2;
-	softdrinklrg.qty = 4
+	cheesbgr.qty = 1; // 1 x cheese
+	chickenbgr.qty = 2; // 1 x chicken
+	softdrinksml.qty = 2; // 2 x drink sml
+	softdrinklrg.qty = 4 // 4 x drink lrg
 
 	const expectedTotal = cheesbgr.price*cheesbgr.qty + softdrinksml.price*softdrinksml.qty + 
 	chickenbgr.price*chickenbgr.qty + softdrinklrg.price*softdrinklrg.qty;

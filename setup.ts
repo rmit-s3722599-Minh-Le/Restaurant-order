@@ -26,7 +26,7 @@ const testOrder: Food[] = [
   }
 ]
 
-// export const mockOrderCopy = testOrder.map(item => ({ ...item }))
+
 export function mockOrderCopy(): Food[] {
   return testOrder.map(item => ({ ...item }))
 }

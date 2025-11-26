@@ -1,73 +1,78 @@
 # React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is my submission for the RedCat's coding challenge built using React, Typescript and Vite.
 
-Currently, two official plugins are available:
+The user is able to select their desired amount of food items, and place an order. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+They can also reset their input while ordering. It also resets input after ordering.
 
-## React Compiler
+A record of their latest receipt is shown after the order.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Example of App
 
-## Expanding the ESLint configuration
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/9282abb0-296a-40b1-b404-5550d119841a" />
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Features
+- Menu items (Cheeseburger, Chicken Burger, Soft drinks) displayed with their resepective name, price and quantity
+- Number inputs available for each item when placing order
+- Place Order and Reset buttons
+- Validations including:
+  - disabling order and reset button with 0 total quantities of items
+  - inputs only allowing positive whole numbers
+- Dynamic Quantity, GST and Total shown when modifying the order before submitting order
+- Unit tests with App/Components    
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Tech Stack
+- React
+- Typescript
+- Vite
+- Material UI (MUI)
+- React Test Library (RTL)
+- Vitest
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Prerequisites
+- Node and Npm
+- Yarn
+
+## Running Project
+### Installing packages
+From the root of project, run:
+```
+yarn install
+```
+### Staring up local host
+From the root of project, run: 
+```
+yarn run dev
+```
+Port is set to run at [localhost:8080](http://localhost:8080/)
+
+To update localhost port, update at vite.config.ts:
+```
+  server: {
+    port: 8080,
+  }
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Running unit test
+From the root of project, run: 
 ```
+yarn test
+```
+it will automatically run all unit tests.
+
+## Project Structure
+```
+...
+├── README.md
+├── package.json
+├── setup.ts              # Testing setup file
+└── src/
+    ├── App.tsx           # Main app entry
+    ├── constants.ts      # Shared constants used across components and app
+    ├── components/       # UI components + their unit tests
+    └── utils/
+        └── priceCalculator.ts  # price calculation utils used for components and app
+```
+
