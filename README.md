@@ -10,7 +10,7 @@ A record of their latest receipt is shown after the order.
 
 ## Example of App
 
-<img width="400" alt="image" src="https://github.com/user-attachments/assets/9282abb0-296a-40b1-b404-5550d119841a" />
+<img width="300" alt="image" src="https://github.com/user-attachments/assets/b2f876e5-d3bd-47dc-868c-ca47631ed563" />
 
 
 ## Features
@@ -41,7 +41,7 @@ From the root of project, run:
 ```
 yarn install
 ```
-### Staring up local host
+### Starting up local host
 From the root of project, run: 
 ```
 yarn run dev

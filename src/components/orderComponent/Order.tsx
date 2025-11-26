@@ -15,12 +15,17 @@ function Order({setOrder}: OrderProps) {
     return initOrder.map(item => ({ ...item }));  
   }
   
-  function addOrder(e: React.MouseEvent<HTMLButtonElement>) {
-    e.preventDefault();
+  function addOrder() {
     console.log(currentorder);
     setCurrentOrder(createInitOrder());
     setOrder(currentorder);
   }
+
+  function handleQtyChange(index: number, val: string) {
+    const newOrder = [...currentorder];
+    val === "" ? newOrder[index].qty = 0 : newOrder[index].qty = parseInt(val, 10);
+    setCurrentOrder(newOrder);
+  };
 
   
   return (
@@ -43,10 +48,7 @@ function Order({setOrder}: OrderProps) {
                   label="Quantity"
                   value={Number(currentorder[index].qty).toString()}
                   onChange={(e) => {
-                    const val = e.target.value
-                    const newOrder = [...currentorder];
-                    val === "" ? newOrder[index].qty = 0 : newOrder[index].qty = parseInt(val, 10);
-                    setCurrentOrder(newOrder);
+                    handleQtyChange(index, e.target.value)
                   }}
                   slotProps={{
                     htmlInput: { min: 0 }
@@ -61,7 +63,7 @@ function Order({setOrder}: OrderProps) {
           <Button
             variant="contained"
             disabled={calculateTotalPrice(currentorder) == 0}
-            onClick={(e) => { addOrder(e) }}
+            onClick={() => { addOrder() }}
           >
             Place Order
           </Button>
