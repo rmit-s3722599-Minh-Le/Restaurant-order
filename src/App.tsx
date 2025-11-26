@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import Order from './components/orderComponent/Order'
-import Receipts from './components/receiptComponent/Receipts'
+import Receipt from './components/receiptComponent/Receipt'
 import { type Food } from './constants'
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <Order setOrder={setOrder}/>
-      <Receipts order={order}/>
+      <Receipt order={order}/>
     </>
   )
 }

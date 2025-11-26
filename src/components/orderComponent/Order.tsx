@@ -1,10 +1,6 @@
 import { useState } from 'react'
 import { initOrder } from '../../constants'
-import {
-  Button,
-  TextField,
-  Stack,
-} from "@mui/material";
+import { Button, TextField, Stack } from "@mui/material";
 import { calculateTotalPrice } from '../../utils/priceCalculator';
 import Price from '../priceComponent/Price';
 
@@ -48,7 +44,7 @@ function Order({setOrder}: OrderProps) {
                 onChange={(e) => {
                   const val = e.target.value
                   const newOrder = [...currentorder];
-                  val === "" ? newOrder[index].qty = 0 : newOrder[index].qty = parseInt(e.target.value, 10);
+                  val === "" ? newOrder[index].qty = 0 : newOrder[index].qty = parseInt(val, 10);
                   setCurrentOrder(newOrder);
                 }}
                 slotProps=  {{

@@ -3,9 +3,9 @@ import type { Food } from "../../constants"
 import Price from "../priceComponent/Price"
 
 
-function Receipts({order}: {order: Food[]}) {
+function Receipt({order}: {order: Food[]}) {
   return (
-    <Stack>
+    <Stack data-testid="receipt-stack">
       {order && order.length > 0 && (
         <>
           <h2>--------------------------</h2>
@@ -17,4 +17,4 @@ function Receipts({order}: {order: Food[]}) {
   )
 }
 
-export default Receipts
+export default Receipt

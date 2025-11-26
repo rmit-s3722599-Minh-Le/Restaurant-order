@@ -4,7 +4,7 @@ import type { Food } from "../../constants"
 
 
 function Price({order}: {order: Food[]}) {
-  let totalPrice = calculateTotalPrice(order);
+  const totalPrice = calculateTotalPrice(order);
 
   return (
     <Stack spacing ={0} direction ="column" justifyContent={'center'} alignItems={'center'} 
