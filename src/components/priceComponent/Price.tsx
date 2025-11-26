@@ -12,8 +12,9 @@ function Price({order}: {order: Food[]}) {
       {
       order.map((item, index) => (
         <div key={index}>
-            <h4>{item.name.replace(/_/g, " ") + ` x ${item.qty}  $${item.price * item.qty}`}</h4>
-        </div>      
+          {/* don't show items with no quantity*/}
+          {item.qty > 0 && <h4>{item.name.replace(/_/g, " ") + ` x ${item.qty}  $${item.price * item.qty}`}</h4>}
+        </div>
       ))}
       <h3>Total: ${totalPrice}</h3>
       <h3>Including GST (${calculateGST(totalPrice)})</h3>

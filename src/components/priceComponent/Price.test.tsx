@@ -13,9 +13,12 @@ describe('Price Component', () => {
 
   it('should render food items', () => {
     expect(screen.getByText('Cheeseburger x 1 $15')).toBeTruthy()
-    expect(screen.getByText('Chicken Burger x 0 $0')).toBeTruthy()
     expect(screen.getByText('Softdrink Small x 3 $12')).toBeTruthy()
     expect(screen.getByText('Softdrink Large x 1 $5')).toBeTruthy()
+  })
+
+  it('should not render item with 0 quantity', () => {
+    expect(screen.queryByText(/Chicken/i)).not.toBeInTheDocument();
   })
 
   it('should render total cost from items', () => {

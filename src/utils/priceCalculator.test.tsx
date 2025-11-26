@@ -1,5 +1,4 @@
 import { describe, it, expect } from 'vitest'
-
 import { mockOrderCopy } from '../../setup'
 import { calculateGST, calculateTotalPrice } from './priceCalculator'
 

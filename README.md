@@ -1,6 +1,6 @@
 # React + TypeScript + Vite
 
-This is my submission for the RedCat's coding challenge built using React, Typescript and Vite.
+This is my submission for the Redcat's coding challenge built using React, Typescript and Vite.
 
 The user is able to select their desired amount of food items, and place an order. 
 

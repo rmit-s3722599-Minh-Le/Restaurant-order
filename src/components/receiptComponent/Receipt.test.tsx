@@ -8,6 +8,7 @@ import { calculateTotalPrice } from '../../utils/priceCalculator'
 describe('Price Component', () => {
   let mockOrder = mockOrderCopy();
   let total = calculateTotalPrice(mockOrder);
+  
   describe('with existing order', () => {
     beforeEach(() => {
       render(<Receipt order={mockOrder} />)
@@ -18,7 +19,7 @@ describe('Price Component', () => {
     })
 
     it('should render price component', () => {
-      expect(screen.getByText(`${mockOrder[0].name} x 1 $${mockOrder[0].price}`)).toBeInTheDocument();
+      expect(screen.getByText(`${mockOrder[0].name} x ${mockOrder[0].qty} $${mockOrder[0].price}`)).toBeInTheDocument();
       expect(screen.getByText(`Total: $${total}`)).toBeInTheDocument()
     })
   })

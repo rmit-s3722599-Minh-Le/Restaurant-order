@@ -29,6 +29,7 @@ function Order({setOrder}: OrderProps) {
       <div>
         <Stack spacing={2}>
           {
+            // Mapping of items with inputs
             initOrder.map((item, index) => (
               <Stack
                 direction="row"
@@ -36,30 +37,31 @@ function Order({setOrder}: OrderProps) {
                 alignItems="center"
                 key={index}
               >
-              <h3 style={{ width: 200 }}>{(item.name).replace(/_/g, " ") + ` ($${item.price})`}</h3>
-              <TextField
-                type="number"
-                label="Quantity"
-                value={Number(currentorder[index].qty).toString()}
-                onChange={(e) => {
-                  const val = e.target.value
-                  const newOrder = [...currentorder];
-                  val === "" ? newOrder[index].qty = 0 : newOrder[index].qty = parseInt(val, 10);
-                  setCurrentOrder(newOrder);
-                }}
-                slotProps=  {{
-                  htmlInput: { min: 0 }
-                }}
-              /> 
+                <h3 style={{ width: 200 }}>{(item.name).replace(/_/g, " ") + ` ($${item.price})`}</h3>
+                <TextField
+                  type="number"
+                  label="Quantity"
+                  value={Number(currentorder[index].qty).toString()}
+                  onChange={(e) => {
+                    const val = e.target.value
+                    const newOrder = [...currentorder];
+                    val === "" ? newOrder[index].qty = 0 : newOrder[index].qty = parseInt(val, 10);
+                    setCurrentOrder(newOrder);
+                  }}
+                  slotProps={{
+                    htmlInput: { min: 0 }
+                  }}
+                /> 
               </Stack>         
             ))
           }
-          {/* Confirmation */}
+          {/* Dynamic item order calculation */}
           <Price order={currentorder} />
+          {/* Buttons */}
           <Button
             variant="contained"
             disabled={calculateTotalPrice(currentorder) == 0}
-            onClick={(e) => { addOrder(e)}}
+            onClick={(e) => { addOrder(e) }}
           >
             Place Order
           </Button>

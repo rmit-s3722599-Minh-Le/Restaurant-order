@@ -59,10 +59,7 @@ describe('Order Component', () => {
       const resetOrderButton = screen.getByRole("button", { name: /Reset Order/i })
       fireEvent.click(resetOrderButton);
       const qtyInputs = screen.getAllByLabelText('Quantity') as HTMLInputElement[];
-      qtyInputs.forEach((input) => {
-        expect(input.value).toBe('0');
-      })
+      qtyInputs.forEach((input) => { expect(input.value).toBe('0') })
     })
   })
-  
 })
