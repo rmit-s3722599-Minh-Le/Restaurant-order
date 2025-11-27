@@ -22,9 +22,12 @@ function Order({setOrder}: OrderProps) {
   }
 
   function handleQtyChange(index: number, val: string) {
-    const newOrder = [...currentorder];
-    val === "" ? newOrder[index].qty = 0 : newOrder[index].qty = parseInt(val, 10);
-    setCurrentOrder(newOrder);
+    const updateOrder = [...currentorder];
+    updateOrder[index] = {
+      ...updateOrder[index],
+      qty: val === "" ? 0 : parseInt(val, 10),
+    };
+    setCurrentOrder(updateOrder);
   };
 
   
