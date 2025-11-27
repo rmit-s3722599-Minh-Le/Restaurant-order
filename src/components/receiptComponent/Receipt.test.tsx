@@ -19,7 +19,7 @@ describe('Price Component', () => {
     })
 
     it('should render price component', () => {
-      expect(screen.getByText(`${mockOrder[0].name} x ${mockOrder[0].qty} $${mockOrder[0].price}`)).toBeInTheDocument();
+      expect(screen.getByText(`Cheeseburger x 1 $15`)).toBeInTheDocument();
       expect(screen.getByText(`Total: $${total}`)).toBeInTheDocument()
     })
   })

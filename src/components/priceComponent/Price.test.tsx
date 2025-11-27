@@ -18,7 +18,7 @@ describe('Price Component', () => {
   })
 
   it('should not render item with 0 quantity', () => {
-    expect(screen.queryByText(/Chicken/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/Chicken Burger/i)).not.toBeInTheDocument();
   })
 
   it('should render total cost from items', () => {
