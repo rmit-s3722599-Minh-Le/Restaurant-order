@@ -40,6 +40,18 @@ describe('Order Component', () => {
       expect(screen.getByRole("button", { name: /Reset Order/i })).toBeEnabled();
     })
 
+    it(`Render and cheeseburger input is submitted negatively`, () => {
+        const quantityInputs = screen.getAllByLabelText('Quantity') as HTMLInputElement[];
+        fireEvent.change(quantityInputs[0], { target: { value : '-1'}}); 
+        expect(screen.getByText('Cheeseburger x 1 $15')).toBeTruthy()
+    })
+
+    it(`Render and cheeseburger input is submitted with decimals`, () => {
+        const quantityInputs = screen.getAllByLabelText('Quantity') as HTMLInputElement[];
+        fireEvent.change(quantityInputs[0], { target: { value : '1.4'}}); 
+        expect(screen.getByText('Cheeseburger x 1 $15')).toBeTruthy()
+    })
+
     it('should update total price', () => {
       expect(screen.queryByText(`Total: $0`)).toBeNull();
     })
