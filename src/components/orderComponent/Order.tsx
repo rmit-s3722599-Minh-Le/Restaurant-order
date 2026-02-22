@@ -25,7 +25,7 @@ function Order({setOrder}: OrderProps) {
     const updateOrder = [...currentorder];
     updateOrder[index] = {
       ...updateOrder[index],
-      qty: val === "" ? 0 : parseInt(val, 10),
+      qty: val === "" ? 0 : Math.abs(parseInt(val, 10)),
     };
     setCurrentOrder(updateOrder);
   };
