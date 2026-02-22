@@ -5,7 +5,7 @@ import Receipt from './components/receiptComponent/Receipt'
 import { type Food } from './constants'
 
 function App() {
-  const [order, setOrder] = useState<Food[]>([])
+  const [order, setOrder] = useState<Food[][]>([]);
 
   return (
     <>

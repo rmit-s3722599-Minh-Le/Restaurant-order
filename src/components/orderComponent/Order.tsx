@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import { initOrder } from '../../constants'
+import { initOrder, type Food } from '../../constants'
 import { Button, TextField, Stack } from "@mui/material";
 import { calculateTotalPrice } from '../../utils/priceCalculator';
 import Price from '../priceComponent/Price';
 
 interface OrderProps {
-  setOrder: (order: typeof initOrder) => void;
+  setOrder: (orderUpdater: (prevOrder: Food[][]) => Food[][]) => void;
 }
 
 function Order({setOrder}: OrderProps) {
@@ -16,16 +16,16 @@ function Order({setOrder}: OrderProps) {
   }
   
   function addOrder() {
-    console.log(currentorder);
+    console.log('order button is called');
     setCurrentOrder(createInitOrder());
-    setOrder(currentorder);
+    setOrder(prevOrder => [currentorder, ...prevOrder]);
   }
 
   function handleQtyChange(index: number, val: string) {
     const updateOrder = [...currentorder];
     updateOrder[index] = {
       ...updateOrder[index],
-      qty: val === "" ? 0 : parseInt(val, 10),
+      qty: val === "" ? 0 : Math.abs(parseInt(val, 10)),
     };
     setCurrentOrder(updateOrder);
   };

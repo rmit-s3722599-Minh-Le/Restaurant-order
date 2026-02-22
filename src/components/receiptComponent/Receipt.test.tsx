@@ -1,13 +1,13 @@
 import { render, screen } from '@testing-library/react'
 import { describe, it, expect, beforeEach } from 'vitest'
 import Receipt from './Receipt'
-import { mockOrderCopy } from '../../../setup'
+import { mockOrdersCopy } from '../../../setup'
 import { calculateTotalPrice } from '../../utils/priceCalculator'
 
 
 describe('Price Component', () => {
-  let mockOrder = mockOrderCopy();
-  let total = calculateTotalPrice(mockOrder);
+  let mockOrder = mockOrdersCopy();
+  let total = calculateTotalPrice(mockOrder[0]);
   
   describe('with existing order', () => {
     beforeEach(() => {
@@ -15,7 +15,7 @@ describe('Price Component', () => {
     })
 
     it('should render title', () => {
-      expect(screen.getByText('Receipt')).toBeTruthy()
+      expect(screen.getByText('Receipt 1')).toBeTruthy()
     })
 
     it('should render price component', () => {

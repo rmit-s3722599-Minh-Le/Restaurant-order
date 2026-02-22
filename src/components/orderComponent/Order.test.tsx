@@ -1,7 +1,8 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { describe, it, expect, beforeEach, vi } from 'vitest'
 import Order from './Order'
-import { mockOrderCopy } from '../../../setup'
+import { mockOrdersCopy, mockOrderCopy } from '../../../setup'
+import type { Food } from '../../constants'
 
 describe('Order Component', () => {
   let mockSetOrder = vi.fn()
@@ -59,12 +60,48 @@ describe('Order Component', () => {
     it('should call setOrder with correct order on place-order click', () => {
       const placeOrderButton = screen.getByRole("button", { name: /Place Order/i });
       fireEvent.click(placeOrderButton);
-      let expectedOrder = mockOrderCopy();
-      expectedOrder[0].qty = 1; // CheeseBgr
-      expectedOrder[1].qty = 0; // ChickenBgr
-      expectedOrder[2].qty = 5; // Drink sml
-      expectedOrder[3].qty = 0; // Drink lrg
-      expect(mockSetOrder).toHaveBeenCalledWith(expectedOrder)
+
+      // const testOrder1: Food[] = [
+      //       {
+      //         name: "Cheeseburger",
+      //         price: 15,
+      //         qty: 1  
+      //       },
+      //       {
+      //         name: "Chicken_Burger",
+      //         price: 20,
+      //         qty: 0   
+      //       },
+      //       {
+      //         name: "Softdrink_Small",
+      //         price: 4,
+      //         qty: 5   
+      //       },
+      //       {
+      //         name: "Softdrink_Large",
+      //         price: 5,
+      //         qty: 0   
+      //       }
+      //     ]
+      let expectedOrder = mockOrdersCopy();
+      expectedOrder[0][0].qty = 1; // CheeseBgr
+      expectedOrder[0][1].qty = 0; // ChickenBgr
+      expectedOrder[0][2].qty = 5; // Drink sml
+      expectedOrder[0][3].qty = 0; // Drink lrg
+
+      // expectedOrder = [testOrder1, ...expectedOrder]
+
+
+      const setOrderFunction = mockSetOrder.mock.calls[0][0];  // Get the first function call
+      
+      const newState = setOrderFunction(expectedOrder);
+
+      console.log([expectedOrder[0], ...expectedOrder])
+      console.log(expectedOrder)
+  
+      expect(newState).toEqual([expectedOrder[0], ...expectedOrder]);
+
+        // expect(mockSetOrder).toHaveBeenCalledWith(expectedOrder);
     })
 
     it('should reset order when Reset button is clicked', () => {

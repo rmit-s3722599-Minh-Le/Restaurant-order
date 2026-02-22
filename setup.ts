@@ -31,6 +31,10 @@ export function mockOrderCopy(): Food[] {
   return testOrder.map(item => ({ ...item }))
 }
 
+export function mockOrdersCopy(): Food[][] {
+  return [testOrder.map(item => ({ ...item }))]
+}
+
 // runs a clean after each test case (e.g. clearing jsdom)
 afterEach(() => {
   cleanup();
